@@ -2,7 +2,6 @@
 
 echo "[INFO] WordPress setup started"
 
-# MariaDB'nin hazır olmasını bekle
 until mysqladmin -h mariadb -u root -p$(cat /run/secrets/db_root_password) ping --silent; do
     echo "[INFO] Waiting for MariaDB..."
     :
