@@ -5,7 +5,7 @@ mysqld_safe --datadir=/var/lib/mysql --bind-address=0.0.0.0 &
 
 echo "[INFO] waiting for MariaDB to become available..."
 until mysqladmin ping --silent; do
-  sleep 1
+  :
 done
 
 echo "[INFO] MariaDB is ready"
@@ -26,4 +26,4 @@ ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';
 FLUSH PRIVILEGES;
 EOF
 
-tail -f /dev/null
+wait
