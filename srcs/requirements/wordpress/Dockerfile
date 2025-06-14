@@ -14,11 +14,11 @@ RUN curl -O https://wordpress.org/latest.tar.gz && \
     mv wordpress/* /var/www/html/ && \
     rm -rf wordpress latest.tar.gz
 
-COPY tools/ /usr/local/bin/
+COPY tools/setup.sh /usr/local/bin/setup.sh
 RUN chmod +x /usr/local/bin/setup.sh
 
 WORKDIR /var/www/html
 
 EXPOSE 9000
 
-CMD ["php-fpm7.4", "-F"]
+ENTRYPOINT ["/usr/local/bin/setup.sh"]
